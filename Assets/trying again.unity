@@ -6037,7 +6037,7 @@ GameObject:
   - component: {fileID: 978359393}
   - component: {fileID: 978359392}
   m_Layer: 0
-  m_Name: Concrete (1)
+  m_Name: Wall 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
