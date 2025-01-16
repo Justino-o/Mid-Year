@@ -4,8 +4,26 @@
 TagManager:
   serializedVersion: 3
   tags:
+<<<<<<< Updated upstream
   - Slots_Calling
   - PlinkoBall
+=======
+  - green7_1
+  - green7_2
+  - green7_3
+  - green7_4
+  - red7_1
+  - red7_2
+  - red7_3
+  - red7_4
+  - redhot_1
+  - redhot_2
+  - redhot_3
+  - doubleRH_1
+  - doubleRH_2
+  - tripleRH_1
+  - bonus_1
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
