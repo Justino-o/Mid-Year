@@ -7,15 +7,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int totalScore;
     public Text scoreLabel;
     
     void Awake()
     {
-        if (scoreLabel != null)
-        {
+       if (scoreLabel != null)
+       {
             UpdateScoreUI();
-        }
+       }
 
         if (instance == null)
             instance = this;
@@ -25,22 +24,26 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int score)
     {
-        Debug.Log("Score to Add: " + score);
-        totalScore += score;
-        Debug.Log("Total Score after Addition: " + totalScore);
-        UpdateScoreText();
+        MainMan.playerScore += score;
+        Debug.Log("Total Score after Addition: " + MainMan.playerScore);
+        UpdateScoreUI();
     }
 
-    public void MultiplyScore(int score)
-    {
-        totalScore*=score;
-        Debug.Log(score);
-        UpdateScoreText();
-    }
 
     
-    private void UpdateScoreText()
+    private void UpdateScoreUI()
     {
-        scoreText.text = "Score: " + totalScore;
+        {
+        Debug.Log($"Sigma");
+        if (scoreLabel != null)
+        {
+            scoreLabel.text = $"Score: {MainMan.playerScore}";
+            Debug.Log($"Updated Score UI: {scoreLabel.text}");
+        }
+        else
+        {
+            Debug.LogWarning("ScoreLabel is not assigned in the Inspector.");
+        }
+    }
     }
 }
