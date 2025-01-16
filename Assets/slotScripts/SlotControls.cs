@@ -1,6 +1,7 @@
 using System.Collections; // Required for IEnumerator and coroutines
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class SlotControls : MonoBehaviour
@@ -9,8 +10,11 @@ public class SlotControls : MonoBehaviour
     public GameObject[] spinners, colliders;
     public Rigidbody[] reels;
     public bool spinning;
+    public Text scoreLabel;
     private bool isSpinning;
     [SerializeField]
+
+    
 public Quaternion[] leftSpinnerRots;
 
     // Start is called before the first frame update
@@ -27,10 +31,28 @@ public Quaternion[] leftSpinnerRots;
 
     public void SpinReels()
     {
+        MainMan.playerScore -= 25;
+        UpdateScoreUI();
+
+        print(MainMan.playerScore);
+
         if (!isSpinning) // Prevent multiple spins at the same time
         {
             isSpinning = true;
             StartCoroutine(Spinning());
+        }
+    }
+    void UpdateScoreUI()
+    {
+        Debug.Log($"Sigma");
+        if (scoreLabel != null)
+        {
+            scoreLabel.text = $"Score: ${MainMan.playerScore}";
+            Debug.Log($"Updated Score UI: {scoreLabel.text}");
+        }
+        else
+        {
+            Debug.LogWarning("ScoreLabel is not assigned in the Inspector.");
         }
     }
 
