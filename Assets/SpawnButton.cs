@@ -12,7 +12,6 @@ public class SpawnButton : MonoBehaviour
             Random.Range(-spawnRange.y, 2*spawnRange.y),
             Random.Range(-spawnRange.z, 2*spawnRange.z)
         );
-        Debug.Log(randomOffset);
         Vector3 randomSpawnPosition = spawnPoint.position + randomOffset;
 
         Instantiate(ballPrefab, randomSpawnPosition, Quaternion.identity);
