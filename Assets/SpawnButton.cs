@@ -7,6 +7,7 @@ public class SpawnButton : MonoBehaviour
     public Vector3 spawnRange;
     public void OnButtonPress()
     {
+
         Vector3 randomOffset = new Vector3(
             Random.Range(-spawnRange.x, 2*spawnRange.x),
             Random.Range(-spawnRange.y, 2*spawnRange.y),
@@ -16,5 +17,6 @@ public class SpawnButton : MonoBehaviour
 
         Instantiate(ballPrefab, randomSpawnPosition, Quaternion.identity);
     }
+    
 }
 
