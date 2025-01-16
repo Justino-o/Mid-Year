@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5973912884543569989}
-  - component: {fileID: 6476978684825544243}
+  - component: {fileID: 8511818634111805073}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6476978684825544243
+--- !u!114 &8511818634111805073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1759042899750351951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96e5233bcdd2fa44095fa1a1129a8270, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e940bd7a286d7b4a8989537592e26a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 4896833844916473098, guid: bc3be1de92d3fc14fb25ba8a8e8e7984, type: 3}
-  spawnPoint: {fileID: 0}
-  spawnInterval: 1
+  spawnPoint: {fileID: 5973912884543569989}
+  spawnRange: {x: 1, y: 0, z: 0}
