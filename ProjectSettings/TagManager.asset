@@ -3,27 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-<<<<<<< Updated upstream
-  - Slots_Calling
-  - PlinkoBall
-=======
-  - green7_1
-  - green7_2
-  - green7_3
-  - green7_4
-  - red7_1
-  - red7_2
-  - red7_3
-  - red7_4
-  - redhot_1
-  - redhot_2
-  - redhot_3
-  - doubleRH_1
-  - doubleRH_2
-  - tripleRH_1
-  - bonus_1
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -63,10 +43,3 @@ TagManager:
     locked: 0
   m_RenderingLayers:
   - Default
-  - Light Layer 1
-  - Light Layer 2
-  - Light Layer 3
-  - Light Layer 4
-  - Light Layer 5
-  - Light Layer 6
-  - Light Layer 7

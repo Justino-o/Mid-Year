@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TP_Plinko : MonoBehaviour
+public class Slots_TP : MonoBehaviour
 {
     // Method to load a new scene
     public void SwitchScene(string sceneName)
