@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    public int scoreValue = 100;
+    public int scoreValue;
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.gameObject.GetComponent<>)
-    //     {
-    //         Debug.Log("Sigma");
-    //         GameManager.instance.AddScore(scoreValue);
-    //         Destroy(other.gameObject);
-    //     }
-    // }   
+    private void OnTriggerEnter(Collider other)
+    {
+        // GameManager.instance.MultiplyScore(scoreValue);
+        // Debug.Log(scoreValue);
+        GameManager.instance.AddScore(scoreValue);
+        
+    }   
 }

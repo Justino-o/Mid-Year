@@ -1,15 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int totalScore = 0;
-    public Text scoreText;
-
+    public int totalScore;
+    public Text scoreLabel;
+    
     void Awake()
     {
+        if (scoreLabel != null)
+        {
+            UpdateScoreUI();
+        }
+
         if (instance == null)
             instance = this;
         else
@@ -18,12 +25,22 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int score)
     {
+        Debug.Log("Score to Add: " + score);
         totalScore += score;
-        UpdateScoreUI();
+        Debug.Log("Total Score after Addition: " + totalScore);
+        UpdateScoreText();
     }
 
-    void UpdateScoreUI()
+    public void MultiplyScore(int score)
     {
-        scoreText.text = "Score: " + totalScore.ToString();
+        totalScore*=score;
+        Debug.Log(score);
+        UpdateScoreText();
+    }
+
+    
+    private void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + totalScore;
     }
 }
