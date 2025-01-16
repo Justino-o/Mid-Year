@@ -1,62 +1,74 @@
-using System.Collections;
+using System.Collections; // Required for IEnumerator and coroutines
 using System.Collections.Generic;
 using UnityEngine;
-public class SlotControls: MonoBehaviour
-{
-    private ScoreCalculator tsc;
-    private AudioControls tac;
-    private ScoreCalculator tscal;
 
-    public GameObject[] spinners,colliders;
-    public Rigidbody[]reels;
-    public bool startBool, playGame, spinning, bonusBool, featureBool;
+
+public class SlotControls : MonoBehaviour
+{
+    // Existing variables
+    public GameObject[] spinners, colliders;
+    public Rigidbody[] reels;
+    public bool spinning;
+    private bool isSpinning;
     [SerializeField]
-    public Quaternion[] leftSpinnerRots;
-    public int quaternionZInt;
-    void Start(){
-        tscal=FindObjectOfType<ScoreCalculator>();
-        // for(int i=0; i<leftSpinnerRots.Length;i++){
-        //     if(i==0){
-        //         leftSpinnerRots[0]=Quaternion.Euler(reels[0].transform.eulerAngles.x,reels[0].transform.eulerAngles.y,reels[0].transform.eulerAngles.z);
-        //     }
-        //     else{
-        //         quaternionZInt+=24;
-        //          leftSpinnerRots[i]=Quaternion.Euler(reels[0].transform.eulerAngles.x,reels[0].transform.eulerAngles.y,reels[0].transform.eulerAngles.z-quaternionZInt);
-        //     }
-        // }
+public Quaternion[] leftSpinnerRots;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        isSpinning = false;
     }
-    void Update(){
-        if(spinning){
-            spinning=false;
-            // for(int i=0; i<reels.Length;i++){
-            //     reels[i].constraints=RigidbodyConstraints.FreezeAll;
-            // }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Keep logic here if needed
+    }
+
+    public void SpinReels()
+    {
+        if (!isSpinning) // Prevent multiple spins at the same time
+        {
+            isSpinning = true;
             StartCoroutine(Spinning());
         }
     }
-    IEnumerator Spinning(){
-        for(int i=0;i<colliders.Length; i++){
-            colliders[i].SetActive(false);
-        }
-        for(int i=0;i<reels.Length;i++){
-            reels[i].constraints=RigidbodyConstraints.FreezePositionX |RigidbodyConstraints.FreezePositionY |RigidbodyConstraints.FreezePositionZ|RigidbodyConstraints.FreezeRotationX|RigidbodyConstraints.FreezeRotationY;
-            float randTorque=Random.Range(100,200);
-            Debug.Log(randTorque);
-            reels[i].AddTorque(-randTorque,0f,0f,ForceMode.Impulse);
 
-        }  
-        yield return new WaitForSeconds(5f);
-        tscal.lReelCalScoresBool=false;
-        Debug.Log("Stop Spinning");
-        for(int i=0; i<reels.Length;i++){
-            reels[i].constraints=RigidbodyConstraints.FreezePositionX |RigidbodyConstraints.FreezePositionY |RigidbodyConstraints.FreezePositionZ|RigidbodyConstraints.FreezeRotationX|RigidbodyConstraints.FreezeRotationY|RigidbodyConstraints.FreezeRotationZ;
+    private IEnumerator Spinning()
+    {
+        // Disable colliders during spinning
+        foreach (var collider in colliders)
+        {
+            collider.SetActive(false);
         }
-            yield return new WaitForSeconds(.3f);
-        for(int i=0;i<colliders.Length; i++){
-            colliders[i].SetActive(true);
+
+        // Apply random torque to each reel
+        foreach (var reel in reels)
+        {
+            reel.constraints = RigidbodyConstraints.FreezePositionX |
+                               RigidbodyConstraints.FreezePositionY |
+                               RigidbodyConstraints.FreezePositionZ |
+                               RigidbodyConstraints.FreezeRotationX |
+                               RigidbodyConstraints.FreezeRotationY;
+
+            float randTorque = Random.Range(100, 200);
+            reel.AddTorque(-randTorque, 0f, 0f, ForceMode.Impulse);
         }
+
+        // Wait for spinning duration
         yield return new WaitForSeconds(5f);
-        // spinning=true;
+
+        // Stop reels and re-enable colliders
+        foreach (var reel in reels)
+        {
+            reel.constraints = RigidbodyConstraints.FreezeAll;
+        }
+        foreach (var collider in colliders)
+        {
+            collider.SetActive(true);
+        }
+
+        // Mark spinning as complete
+        isSpinning = false;
     }
-
 }
