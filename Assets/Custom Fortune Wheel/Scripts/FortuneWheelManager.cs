@@ -25,7 +25,7 @@ public class FortuneWheelManager : MonoBehaviour
         while (true) // Infinite loop to keep adding to the score
         {
             yield return new WaitForSeconds(10f); // Wait for 10 seconds
-            MainMan.playerScore += 50;
+            MainMan.playerScore += 25;
             Debug.Log($"Player Score: {MainMan.playerScore}");
             UpdateScoreUI();
         }
