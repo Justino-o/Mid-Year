@@ -1338,6 +1338,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6485979291946755967, guid: a31cd4b716b0cff43b716544c3d26dbc, type: 3}
+      propertyPath: scoreLabel
+      value: 
+      objectReference: {fileID: 2011868735}
+    - target: {fileID: 6485979291946755967, guid: a31cd4b716b0cff43b716544c3d26dbc, type: 3}
       propertyPath: spinners.Array.size
       value: 0
       objectReference: {fileID: 0}
