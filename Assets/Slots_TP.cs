@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 public class Slots_TP : MonoBehaviour
 {
     // Method to load a new scene
-    public void SwitchScene(string sceneName)
+    void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(sceneName);
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("SlotMachine");
     }
 }
