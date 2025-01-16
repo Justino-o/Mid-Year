@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MainMan : MonoBehaviour
 {
+    //public Text score;
     public static int playerScore = 100;
 
     void Start()

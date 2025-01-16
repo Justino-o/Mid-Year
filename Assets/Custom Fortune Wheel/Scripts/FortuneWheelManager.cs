@@ -13,9 +13,20 @@ public class FortuneWheelManager : MonoBehaviour
 
     void Awake()
     {
+        StartCoroutine(AddScoreEvery10Seconds());
         // Initialize the score label if not null
         if (scoreLabel != null)
         {
+            UpdateScoreUI();
+        }
+    }
+    IEnumerator AddScoreEvery10Seconds()
+    {
+        while (true) // Infinite loop to keep adding to the score
+        {
+            yield return new WaitForSeconds(10f); // Wait for 10 seconds
+            MainMan.playerScore += 50;
+            Debug.Log($"Player Score: {MainMan.playerScore}");
             UpdateScoreUI();
         }
     }
@@ -46,6 +57,7 @@ public class FortuneWheelManager : MonoBehaviour
 
     void UpdateScore(string result)
     {
+
         // Parse the result to an integer
         if (int.TryParse(result, out int wheelValue))
         {
@@ -55,11 +67,13 @@ public class FortuneWheelManager : MonoBehaviour
                     MainMan.playerScore /= 2; // Halve the player score
                     break;
                 case 2:
-                case 4:
                     MainMan.playerScore += 200; // Add 200 to the player score
                     break;
                 case 3:
                     MainMan.playerScore -= 200; // Subtract 200 from the player score
+                    break;
+                    case 4:
+                    MainMan.playerScore += 50;
                     break;
                 case 5:
                     MainMan.playerScore *= 2; // Double the player score
@@ -83,7 +97,7 @@ public class FortuneWheelManager : MonoBehaviour
         Debug.Log($"Sigma");
         if (scoreLabel != null)
         {
-            scoreLabel.text = $"Score: {MainMan.playerScore}";
+            scoreLabel.text = $"Score: ${MainMan.playerScore}";
             Debug.Log($"Updated Score UI: {scoreLabel.text}");
         }
         else
