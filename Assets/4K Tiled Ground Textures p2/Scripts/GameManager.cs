@@ -29,6 +29,12 @@ public class GameManager : MonoBehaviour
         UpdateScoreUI();
     }
 
+    public void RemoveScore()
+    {
+        MainMan.playerScore -= 25;
+        UpdateScoreUI();
+    }
+
 
     
     private void UpdateScoreUI()
